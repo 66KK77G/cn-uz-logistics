@@ -1331,8 +1331,17 @@ function init(){
   document.getElementById("navToggle").onclick = ()=>document.getElementById("mainNav").classList.toggle("open");
   document.getElementById("floatInq").onclick = ()=>location.hash="#/contact";
   document.getElementById("floatTelegram").onclick = ()=>window.open("https://t.me/+8613387588000","_blank");
-  const form = document.getElementById("inquiryForm");
-  document.addEventListener("submit", e=>{ if(e.target && e.target.id==="inquiryForm"){ e.preventDefault(); toast(t(CONTACT.f_ok)); e.target.reset(); } });
+    const TG_TOKEN="8309591308:AAE_nLUnorOGnKGGAZmlDhIWoA2OBSK64-0";
+  const TG_CHAT_ID="6610504893";
+  document.addEventListener("submit",async e=>{
+    if(e.target&&e.target.id==="inquiryForm"){
+      e.preventDefault();
+      const f=e.target,fd=new FormData(f);
+      const msg="新询盘 | 公司："+(fd.get("company")||"-")+" | 联系人："+(fd.get("contact")||"-")+" | 电话："+(fd.get("phone")||"-")+" | 行业："+(fd.get("industry")||"-")+" | 货物："+(fd.get("goods")||"-")+" | 重量体积："+(fd.get("wv")||"-")+" | 路线："+(fd.get("route")||"-")+" | 需求："+(fd.get("desc")||"-");
+      try{await fetch("https://api.telegram.org/bot"+TG_TOKEN+"/sendMessage",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({chat_id:TG_CHAT_ID,text:msg})});}catch(err){}
+      toast(t(CONTACT.f_ok));f.reset();
+    }
+  });
   window.addEventListener("hashchange", render);
   render();
 }
