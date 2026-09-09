@@ -643,6 +643,7 @@ const CASE_GROUPS=[
 
 /* ---- News ---- */
 const NEWS=[
+ {cat:"promo",catName:{zh:"重点推荐",en:"Featured",ru:"Рекомендуем",uz:"Tavsiya"},date:"2026-09-09",link:"promo.html",title:{zh:"昂斯特供应链：中国到乌兹别克斯坦一站式跨境物流服务",en:"Aonst Supply Chain: One-Stop China–Uzbekistan Cross-Border Logistics",ru:"Aonst: комплексная логистика Китай–Узбекистан",uz:"Aonst: Xitoy–O'zbekiston yagona logistika xizmati"},desc:{zh:"自有车辆50+、清关团队30人、四大自营仓库，空运·汽运·铁路·大件运输·专业清关，服务国央企重点项目与八大垂直行业。查看完整方案→",en:"50+ trucks, 30 customs specialists, 4 warehouses: air, road, rail, heavy-lift & clearance for SOE projects and 8 industries. View full plan →",ru:"50+ машин, 30 специалистов, 4 склада: авиа, авто, ж/д, негабарит и таможня. Подробнее →",uz:"50+ mashina, 30 mutaxassis, 4 ombor: havo, avto, temir yo'l, katta yuk va bojxona. To'liq ma'lumot →"}},
  {cat:"industry",catName:{zh:"行业资讯",en:"Industry",ru:"Отрасль",uz:"Tarmoq"},date:"2026-08-18",title:{zh:"中乌经贸合作持续深化，跨境物流需求稳步增长",en:"China–Uzbekistan trade deepens, logistics demand grows",ru:"КН–УЗ торговля растёт, растёт спрос на логистику",uz:"Xitoy-O'zbekiston savdosi o'smoqda, logistika talabi ortmoqda"},desc:{zh:"随着中乌双边贸易规模扩大与基建能源项目推进，口岸货运量与多式联运需求保持增长态势。",en:"As bilateral trade expands and infrastructure & energy projects advance, border freight and intermodal demand keep growing.",ru:"Рост торговли и проектов повышает спрос на перевозки и мультимодальность.",uz:"Savdo va loyihalar o'sishi yuk tashish va intermodal talabni oshiradi."}},
  {cat:"policy",catName:{zh:"政策解读",en:"Policy",ru:"Политика",uz:"Siyosat"},date:"2026-08-05",title:{zh:"乌兹别克斯坦海关新政：进口单证合规要求持续细化",en:"Uzbekistan customs updates: import documentation requirements refined",ru:"Таможня Узбекистана: уточнены требования к документам",uz:"O'zbekiston bojxonasi: hujjat talablari aniqlashtirildi"},desc:{zh:"建议出口企业提前核对商品归类与单证完整度，降低清关审价与查验风险，保障货物时效。",en:"Exporters should pre-check classification and documentation to reduce valuation/inspection risk and protect transit times.",ru:"Экспортёрам важно заранее проверять классификацию и документы.",uz:"Eksportchilar tasnif va hujjatlarni oldindan tekshirishi muhim."}},
  {cat:"know",catName:{zh:"物流知识",en:"Know-how",ru:"Знания",uz:"Bilim"},date:"2026-07-22",title:{zh:"大件超限设备出口乌兹别克斯坦运输要点",en:"Key points for oversized equipment export to Uzbekistan",ru:"Негабарит в Узбекистан: ключевые моменты",uz:"O'zbekistonga katta yuk eksporti bo'yicha muhim jihatlar"},desc:{zh:"从勘测、方案规划到口岸过境，梳理大件超限货物运输的全流程关键控制点与常见风险。",en:"From survey and planning to border crossing: key control points and common risks for oversized cargo.",ru:"От обследования до границы: ключевые точки и риски негабарита.",uz:"O'lchovdan chegaragacha: katta yuklarning asosiy nuqtalari va xavflari."}},
@@ -741,11 +742,11 @@ function vHome(){
       </div>
     </article>`).join("");
   const newsPre = NEWS.slice(0,3).map(n=>`
-    <article class="news-card">
+    <article class="news-card">${n.link?`<a href="${n.link}" style="display:block;text-decoration:none;color:inherit">`:""}
       <div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><span class="cat">${t(n.catName)}</span><span class="date">${n.date}</span></div>
       <h3>${t(n.title)}</h3>
       <p>${t(n.desc)}</p>
-    </article>`).join("");
+    ${n.link?"</a>":""}</article>`).join("");
   const flowSteps=[{zh:"国内提货",en:"Pickup",ru:"Забор груза",uz:"Yuk olish"},{zh:"出口报关",en:"Export",ru:"Экспорт",uz:"Eksport"},{zh:"口岸过境",en:"Border",ru:"Граница",uz:"Chegara"},{zh:"海外清关",en:"Customs",ru:"Таможня",uz:"Bojxona"},{zh:"目的国仓储",en:"Warehousing",ru:"Склад",uz:"Ombor"},{zh:"末端派送",en:"Delivery",ru:"Доставка",uz:"Yetkazish"}];
   return `
   <section class="hero">
@@ -1161,11 +1162,11 @@ function vNews(){
     html+=`<section class="section" style="padding:34px 0;border-bottom:1px solid var(--line)">
       <div class="sec-head"><span class="eyebrow">${t(items[0].catName)}</span><h2 class="sec-title" style="font-size:24px">${t(items[0].catName)}</h2></div>
       <div class="grid news-grid">${items.map(n=>`
-        <article class="news-card">
+        <article class="news-card">${n.link?`<a href="${n.link}" style="display:block;text-decoration:none;color:inherit">`:""}
           <div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><span class="cat">${t(n.catName)}</span><span class="date">${n.date}</span></div>
           <h3>${t(n.title)}</h3>
           <p>${t(n.desc)}</p>
-        </article>`).join("")}</div>
+        ${n.link?"</a>":""}</article>`).join("")}</div>
     </section>`;
   });
   return `
