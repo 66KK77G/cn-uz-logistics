@@ -1,4 +1,48 @@
 User-agent: *
 Allow: /
 
+# 主流搜索引擎爬虫
+User-agent: Googlebot
+Allow: /
+User-agent: Bingbot
+Allow: /
+User-agent: YandexBot
+Allow: /
+User-agent: Baiduspider
+Allow: /
+User-agent: Sogou web spider
+Allow: /
+User-agent: 360Spider
+Allow: /
+User-agent: DuckDuckBot
+Allow: /
+
+# 主流 AI 大模型爬虫（允许抓取用于问答引用）
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Claude-Web
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Perplexity-User
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: CCBot
+Allow: /
+User-agent: Bytespider
+Allow: /
+User-agent: Amazonbot
+Allow: /
+User-agent: Applebot
+Allow: /
+User-agent: cohere-ai
+Allow: /
+
 Sitemap: https://www.cn-uz.com/sitemap.xml
